@@ -16,12 +16,14 @@ export class HomePage implements OnInit {
 
   characters: any[]=[];
   params= {} as any;
+  filter : any;
   constructor(
     private los_simpsonSvc: LosSimpsonService
     ) { }
 
   ngOnInit() {
     this.params.page=0;
+    this.params.limit = 20;
     this.getCharacters()
   }
   /*OBTENER PERSONAJES */
@@ -32,11 +34,28 @@ export class HomePage implements OnInit {
       next: (res:any)=> {
         this.characters.push(...res.docs)
         console.log(this.characters);
+        if(event) event.target.complete();
       },
       error: (error: any)=>{
-
+        if(event) event.target.complete();
       }
     })
 
+  }
+
+  searchCharacters () {
+    this.params.page = 1;
+    this.los_simpsonSvc.getFilterCharacters(this.filter, this.params).subscribe({
+      next: (res: any) => {
+        this.characters = []
+        this.characters = res.result
+        console.log("busqueda", this.filter)
+        console.log(this.characters);
+        
+      },
+      error: (error : any ) => {
+        
+      }
+    })
   }
 }

@@ -1,0 +1,12 @@
+ion-avatar{
+    max-width: 217px;
+    max-height: 325px;
+    width: 17rem;
+    height: 19rem;
+    margin: 0 auto;
+    --border-radius: 20px;
+}
+
+ion-avatar img {
+    object-fit: contain;
+}

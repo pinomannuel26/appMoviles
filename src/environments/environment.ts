@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl:" https://apisimpsons.fly.dev/api/personajes/"
+  baseUrl:" https://apisimpsons.fly.dev/api/personajes/",
+  filter : "find/"
 };
 
 /*
